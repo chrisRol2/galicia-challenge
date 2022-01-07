@@ -6,10 +6,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>
+        <p>
           Esta es una aplicación realizada para examen de selección de Banco
           Galicia
-        </h1>
+        </p>
       </header>
     </div>
   );
