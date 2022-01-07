@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: galicia-dev
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: galicia.chrisrol.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: galicia-frontend
+                port:
+                  number: 80
+
+  tls:
+    - hosts:
+        - galicia.chrisrol.xyz
+      secretName: manual-tls-secret

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: galicia-frontend
+  namespace: galicia-dev
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+      project: galicia-challenge
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+        project: galicia-challenge
+        tier: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: chrisrol/challenge-galicia:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: 10m
+              memory: 50Mi
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          ports:
+            - containerPort: 80
+              name: galicia-front
+              protocol: TCP
